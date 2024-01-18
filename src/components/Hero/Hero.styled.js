@@ -4,6 +4,7 @@ export const HeroWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  margin-bottom: 20px;
 `;
 
 export const BlockWrapper = styled.div`

@@ -34,7 +34,6 @@ const Teachers = () => {
 
         if (snapshot.exists()) {
           const newTeachers = snapshot.val();
-          console.log(newTeachers);
           dispatch(addTeachers(newTeachers));
 
           if (Object.keys(newTeachers).length < teachersCardsAmount) {
@@ -62,10 +61,7 @@ const Teachers = () => {
           ) : (
             <>
               <Filter />
-              <TeachersList
-                teachers={teachers}
-                teachersCardsAmount={teachersCardsAmount}
-              />
+              <TeachersList teachers={teachers} />
               {hasMoreTeachers && (
                 <Button
                   padding={'16px 48px'}

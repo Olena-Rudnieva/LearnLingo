@@ -7,7 +7,6 @@ export const teachersSlice = createSlice({
   initialState: {
     items: [],
     isLoading: false,
-    error: null,
     favorites: [],
   },
   reducers: {
