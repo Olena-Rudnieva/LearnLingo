@@ -8,18 +8,13 @@ import { db } from '../../firebase/config';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { addTeachers } from '../../redux/teachers/teachersSlice';
-import {
-  selectIsLoading,
-  selectTeachers,
-} from '../../redux/teachers/teachersSelectors';
-import { Loader } from 'components/Loader/Loader';
+import { selectTeachers } from '../../redux/teachers/teachersSelectors';
 
 const Teachers = () => {
   const [teachersCardsAmount, setTeachersCardsAmount] = useState(4);
-  const [hasMoreTeachers, setHasMoreTeachers] = useState(true);
+  const [hasMoreTeachers, setHasMoreTeachers] = useState(false);
   const dispatch = useDispatch();
   const teachers = useSelector(selectTeachers);
-  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
     const fetchTeachers = async () => {
@@ -35,6 +30,7 @@ const Teachers = () => {
         if (snapshot.exists()) {
           const newTeachers = snapshot.val();
           dispatch(addTeachers(newTeachers));
+          setHasMoreTeachers(true);
 
           if (Object.keys(newTeachers).length < teachersCardsAmount) {
             setHasMoreTeachers(false);
@@ -56,21 +52,15 @@ const Teachers = () => {
     <TeachersSection>
       <Container>
         <TeachersWrapper>
-          {isLoading ? (
-            <Loader />
-          ) : (
-            <>
-              <Filter />
-              <TeachersList teachers={teachers} />
-              {hasMoreTeachers && (
-                <Button
-                  padding={'16px 48px'}
-                  text={'Load more'}
-                  type={'button'}
-                  handleClick={loadMore}
-                />
-              )}
-            </>
+          <Filter />
+          <TeachersList teachers={teachers} />
+          {hasMoreTeachers && (
+            <Button
+              padding={'16px 48px'}
+              text={'Load more'}
+              type={'button'}
+              handleClick={loadMore}
+            />
           )}
         </TeachersWrapper>
       </Container>

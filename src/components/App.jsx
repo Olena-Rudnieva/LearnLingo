@@ -17,7 +17,6 @@ export const App = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
       if (user) {
-        console.log(user.accessToken);
         dispatch(addUser({ email: user.email, accessToken: user.accessToken }));
       }
     });

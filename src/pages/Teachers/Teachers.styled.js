@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const TeachersSection = styled.div`
-  padding-top: 96px;
-  padding-bottom: 96px;
+  padding-top: 32px;
+  padding-bottom: 32px;
   background-color: var(--background-grey);
 `;
 
