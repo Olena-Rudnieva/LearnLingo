@@ -1,4 +1,6 @@
+import { useDispatch } from 'react-redux';
 import {
+  ButtonWrapper,
   FilterWrapper,
   Form,
   Label,
@@ -7,29 +9,54 @@ import {
 } from './Filter.styled';
 import { languages, levels, prices } from './filtersOptions';
 import { useState } from 'react';
+import { removeFilter, setFilter } from '../../redux/teachers/teachersSlice';
+import { Button } from 'components/Button/Button';
 
 export const Filter = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState('French');
-  const [selectedLevel, setSelectedLevel] = useState('A1 Beginner');
-  const [selectedPrice, setSelectedPrice] = useState(25);
+  const [selectedLanguage, setSelectedLanguage] = useState('');
+  const [selectedLevel, setSelectedLevel] = useState('');
+  const [selectedPrice, setSelectedPrice] = useState('');
+  const dispatch = useDispatch();
 
   const handleSelectLanguage = event => {
     setSelectedLanguage(event.target.value);
+    dispatch(setFilter({ ...getFilter(), language: event.target.value }));
   };
 
   const handleSelectLevel = event => {
     setSelectedLevel(event.target.value);
+    dispatch(setFilter({ ...getFilter(), level: event.target.value }));
   };
 
   const handleSelectPrice = event => {
     setSelectedPrice(event.target.value);
+    dispatch(setFilter({ ...getFilter(), price: event.target.value }));
+  };
+
+  const getFilter = () => {
+    return {
+      language: selectedLanguage,
+      level: selectedLevel,
+      price: selectedPrice,
+    };
+  };
+
+  const reset = () => {
+    setSelectedLanguage('English');
+    setSelectedLevel('A1 Beginner');
+    setSelectedPrice('25');
+  };
+
+  const handleRemoveFilter = () => {
+    dispatch(removeFilter());
+    reset();
   };
 
   return (
     <FilterWrapper>
       <Form>
         <OptionsWrapper>
-          <Label for="language">Languages</Label>
+          <Label htmlFor="language">Languages</Label>
           <Select
             id="language"
             name="language"
@@ -45,7 +72,7 @@ export const Filter = () => {
         </OptionsWrapper>
 
         <OptionsWrapper>
-          <Label for="level">Level of knowledge</Label>
+          <Label htmlFor="level">Level of knowledge</Label>
           <Select
             id="level"
             name="level"
@@ -61,7 +88,7 @@ export const Filter = () => {
         </OptionsWrapper>
 
         <OptionsWrapper>
-          <Label for="price">Price</Label>
+          <Label htmlFor="price">Price</Label>
           <Select
             id="price"
             name="price"
@@ -75,6 +102,14 @@ export const Filter = () => {
             ))}
           </Select>
         </OptionsWrapper>
+        <ButtonWrapper>
+          <Button
+            padding={'10px 48px'}
+            text={'Reset'}
+            type={'button'}
+            handleClick={handleRemoveFilter}
+          />
+        </ButtonWrapper>
       </Form>
     </FilterWrapper>
   );

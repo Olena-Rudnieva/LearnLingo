@@ -6,8 +6,12 @@ export const teachersSlice = createSlice({
   name: 'teachers',
   initialState: {
     items: [],
-    isLoading: false,
     favorites: [],
+    filter: {
+      language: '',
+      level: '',
+      price: '',
+    },
   },
   reducers: {
     addTeachers: (state, action) => {
@@ -21,11 +25,24 @@ export const teachersSlice = createSlice({
         item => item.id !== action.payload.id
       );
     },
+    setFilter: (state, action) => {
+      state.filter = action.payload;
+    },
+    removeFilter(state, { payload }) {
+      state.filter.language = '';
+      state.filter.level = '';
+      state.filter.price = '';
+    },
   },
 });
 
-export const { addTeachers, addFavorite, removeFavorite } =
-  teachersSlice.actions;
+export const {
+  addTeachers,
+  addFavorite,
+  removeFavorite,
+  setFilter,
+  removeFilter,
+} = teachersSlice.actions;
 export const teachersReducer = teachersSlice.reducer;
 
 const teachersPersistConfig = {

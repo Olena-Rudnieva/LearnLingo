@@ -1,6 +1,11 @@
 import { Filter } from 'components/Filter/Filter';
 import { TeachersList } from 'components/TeachersList/TeachersList';
-import { TeachersSection, TeachersWrapper } from './Teachers.styled';
+import {
+  ButtonWrapper,
+  FilterStyled,
+  TeachersSection,
+  TeachersWrapper,
+} from './Teachers.styled';
 import { Container } from 'components/Container/Container';
 import { Button } from 'components/Button/Button';
 import { ref, get, query, orderByKey, limitToFirst } from 'firebase/database';
@@ -13,8 +18,28 @@ import { selectTeachers } from '../../redux/teachers/teachersSelectors';
 const Teachers = () => {
   const [teachersCardsAmount, setTeachersCardsAmount] = useState(4);
   const [hasMoreTeachers, setHasMoreTeachers] = useState(false);
+  const [allTeachers, setAllTeachers] = useState([]);
   const dispatch = useDispatch();
   const teachers = useSelector(selectTeachers);
+  const filter = useSelector(state => state.teachers.filter);
+
+  useEffect(() => {
+    const fetchAllTeachers = async () => {
+      try {
+        const teachersRef = ref(db, '/');
+        const snapshot = await get(teachersRef);
+
+        if (snapshot.exists()) {
+          const newTeachers = snapshot.val();
+          setAllTeachers(newTeachers);
+        }
+      } catch (error) {
+        console.error('Loading error', error.message);
+      }
+    };
+
+    fetchAllTeachers();
+  }, []);
 
   useEffect(() => {
     const fetchTeachers = async () => {
@@ -46,22 +71,50 @@ const Teachers = () => {
     fetchTeachers();
   }, [dispatch, teachersCardsAmount]);
 
+  const filteredTeachers = allTeachers.filter(teacher => {
+    const { language, level, price } = filter;
+    if (!language && !level && !price) {
+      return true;
+    }
+    const languageFilter = !language || teacher.languages.includes(language);
+    const levelFilter = !level || teacher.levels.includes(level);
+    const priceFilter = !price || teacher.price_per_hour <= price;
+    return languageFilter && levelFilter && priceFilter;
+  });
+
   const loadMore = () => setTeachersCardsAmount(prev => prev + 4);
 
   return (
     <TeachersSection>
       <Container>
         <TeachersWrapper>
-          <Filter />
-          <TeachersList teachers={teachers} />
-          {hasMoreTeachers && (
-            <Button
-              padding={'16px 48px'}
-              text={'Load more'}
-              type={'button'}
-              handleClick={loadMore}
-            />
+          <FilterStyled>
+            <Filter />
+          </FilterStyled>
+          {filter.language === '' &&
+          filter.level === '' &&
+          filter.price === '' ? (
+            <TeachersList teachers={teachers} />
+          ) : (
+            <>
+              {filteredTeachers.length === 0 ? (
+                <h2>No teachers match the criteria</h2>
+              ) : (
+                <TeachersList teachers={filteredTeachers} />
+              )}
+            </>
           )}
+          <ButtonWrapper>
+            {hasMoreTeachers &&
+              filteredTeachers.length === allTeachers.length && (
+                <Button
+                  padding={'16px 48px'}
+                  text={'Load more'}
+                  type={'button'}
+                  handleClick={loadMore}
+                />
+              )}
+          </ButtonWrapper>
         </TeachersWrapper>
       </Container>
     </TeachersSection>

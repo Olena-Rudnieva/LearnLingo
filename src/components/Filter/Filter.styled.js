@@ -44,3 +44,7 @@ export const Select = styled.select`
     color: var(--black);
   }
 `;
+
+export const ButtonWrapper = styled.div`
+  align-self: flex-end;
+`;
