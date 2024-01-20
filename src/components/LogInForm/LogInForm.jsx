@@ -2,6 +2,8 @@ import { Formik, Field } from 'formik';
 import {
   ButtonWrapper,
   ErrorText,
+  EyeIconInvisible,
+  EyeIconVisible,
   FormWrapper,
   InputWrapper,
 } from './LogInForm.styled';
@@ -11,8 +13,7 @@ import { LogInFormSchema } from './LogInFormShema';
 import { ErrorMessage } from 'formik';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase/config';
-import { useDispatch } from 'react-redux';
-import { logIn } from '../../redux/auth/authOperations';
+import { useState } from 'react';
 
 const initialValues = {
   email: '',
@@ -20,14 +21,18 @@ const initialValues = {
 };
 
 export const LogInForm = ({ handleModalToggle }) => {
-  const dispatch = useDispatch();
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const handleTogglePassword = evt => {
+    evt.preventDefault();
+    setIsPasswordVisible(prevState => !prevState);
+  };
 
   const handleSubmit = ({ email, password }, actions) => {
     console.log(email, password);
     signInWithEmailAndPassword(auth, email, password)
       .then(user => {
         console.log(user);
-        dispatch(logIn(user));
         actions.resetForm();
       })
       .catch(error => console.log(error));
@@ -54,10 +59,15 @@ export const LogInForm = ({ handleModalToggle }) => {
             <InputWrapper>
               <label>
                 <Field
-                  type="password"
+                  type={isPasswordVisible ? 'text' : 'password'}
                   name="password"
                   placeholder=" Password"
                 />
+                {isPasswordVisible ? (
+                  <EyeIconVisible onClick={handleTogglePassword} />
+                ) : (
+                  <EyeIconInvisible onClick={handleTogglePassword} />
+                )}
                 <ErrorMessage name="password" component={ErrorText} />
               </label>
             </InputWrapper>
