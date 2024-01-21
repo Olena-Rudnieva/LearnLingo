@@ -1,113 +1,69 @@
-# React homework template
+![Home](./public/home.jpg)
 
-Этот проект был создан при помощи
-[Create React App](https://github.com/facebook/create-react-app). Для знакомства
-и настройки дополнительных возможностей
-[обратись к документации](https://facebook.github.io/create-react-app/docs/getting-started).
+# LearnLingo
 
-## Создание репозитория по шаблону
+The application for a company that offers the services of language tutors for
+online language learning.
 
-Используй этот репозиторий организации GoIT как шаблон для создания репозитория
-своего проекта. Для этого нажми на кнопку `«Use this template»` и выбери опцию
-`«Create a new repository»`, как показано на изображении.
+## Features
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+- Fetching data about teachers from Firebase
+- Filter teachers based on various criteria (languages, levels, price)
+- Save selected teachers as favorites
+- Enable pagination for browsing through the teachers list
 
-На следующем шаге откроется страница создания нового репозитория. Заполни поле
-его имени, убедись что репозиторий публичный, после чего нажми кнопку
-`«Create repository from template»`.
+## Technologies used:
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+- React.js
+- Redux Toolkit
+- Styled Components
+- Firebase
 
-После того как репозиторий будет создан, необходимо перейти в настройки
-созданного репозитория на вкладку `Settings` > `Actions` > `General` как
-показано на изображении.
+## Live page
 
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
+The live page can be accessed through the following link:
+https://olena-rudnieva.github.io/LearnLingo/
 
-Проскролив страницу до самого конца, в секции `«Workflow permissions»` выбери
-опцию `«Read and write permissions»` и поставь галочку в чекбоксе. Это
-необходимо для автоматизации процесса деплоя проекта.
+## Test Task
 
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
+Create an application for a company that offers the services of online language
+tutors. The application consists of three pages:
 
-Теперь у тебя есть личный репозиторий проекта, со структурой файлов и папок
-репозитория-шаблона. Далее работай с ним как с любым другим личным репозиторием,
-клонируй его себе на компьютер, пиши код, делай коммиты и отправляй их на
-GitHub.
+Home Page: This page displays the company's advantages and includes a link
+encouraging users to start using the application. Clicking the link redirects
+users to the "Teachers" page.
 
-## Подготовка к работе
+Teachers Page: This page contains a list of tutors that users can filter by
+teaching language, student proficiency levels, and hourly lesson prices.
 
-1. Убедись что на компьютере установлена LTS-версия Node.js.
-   [Скачай и установи](https://nodejs.org/en/) её если необходимо.
-2. Установи базовые зависимости проекта командой `npm install`.
-3. Запусти режим разработки, выполнив команду `npm start`.
-4. Перейди в браузере по адресу [http://localhost:3000](http://localhost:3000).
-   Эта страница будет автоматически перезагружаться после сохранения изменений в
-   файлах проекта.
+Favorites Page: This private page displays tutors that the user has added to
+their favorites.
 
-## Деплой
+## Technical Specifications:
 
-Продакшн версия проекта будет автоматически проходить линтинг, собираться и
-деплоиться на GitHub Pages, в ветку `gh-pages`, каждый раз когда обновляется
-ветка `main`. Например, после прямого пуша или принятого пул-реквеста. Для этого
-необходимо в файле `package.json` отредактировать поле `homepage`, заменив
-`your_username` и `your_repo_name` на свои, и отправить изменения на GitHub.
-
-```json
-"homepage": "https://your_username.github.io/your_repo_name/"
-```
-
-Далее необходимо зайти в настройки GitHub-репозитория (`Settings` > `Pages`) и
-выставить раздачу продакшн версии файлов из папки `/root` ветки `gh-pages`, если
-это небыло сделано автоматически.
-
-![GitHub Pages settings](./assets/repo-settings.png)
-
-### Статус деплоя
-
-Статус деплоя крайнего коммита отображается иконкой возле его идентификатора.
-
-- **Желтый цвет** - выполняется сборка и деплой проекта.
-- **Зеленый цвет** - деплой завершился успешно.
-- **Красный цвет** - во время линтинга, сборки или деплоя произошла ошибка.
-
-Более детальную информацию о статусе можно посмотреть кликнув по иконке, и в
-выпадающем окне перейти по ссылке `Details`.
-
-![Deployment status](./assets/deploy-status.png)
-
-### Живая страница
-
-Через какое-то время, обычно пару минут, живую страницу можно будет посмотреть
-по адресу указанному в отредактированном свойстве `homepage`. Например, вот
-ссылка на живую версию для этого репозитория
-[https://goitacademy.github.io/react-homework-template](https://goitacademy.github.io/react-homework-template).
-
-Если открывается пустая страница, убедись что во вкладке `Console` нет ошибок
-связанных с неправильными путями к CSS и JS файлам проекта (**404**). Скорее
-всего у тебя неправильное значение свойства `homepage` в файле `package.json`.
-
-### Маршрутизация
-
-Если приложение использует библиотеку `react-router-dom` для маршрутизации,
-необходимо дополнительно настроить компонент `<BrowserRouter>`, передав в пропе
-`basename` точное название твоего репозитория. Слеш в начале строки обязателен.
-
-```jsx
-<BrowserRouter basename="/your_repo_name">
-  <App />
-</BrowserRouter>
-```
-
-## Как это работает
-
-![How it works](./assets/how-it-works.png)
-
-1. После каждого пуша в ветку `main` GitHub-репозитория, запускается специальный
-   скрипт (GitHub Action) из файла `.github/workflows/deploy.yml`.
-2. Все файлы репозитория копируются на сервер, где проект инициализируется и
-   проходит линтинг и сборку перед деплоем.
-3. Если все шаги прошли успешно, собранная продакшн версия файлов проекта
-   отправляется в ветку `gh-pages`. В противном случае, в логе выполнения
-   скрипта будет указано в чем проблема.
+- Use Firebase_DB to enable authentication (registration, login, fetching
+  current user data, logout).
+- Implement a registration/login form and minimal validation using Formik & Yup.
+  All fields must be mandatory. The modal window with the form should close by
+  clicking the "x" button, clicking on the backdrop, or pressing the Esc key.
+- In the Realtime Database (Firebase), create a collection of teachers.
+- Implement a card with the teacher's characteristics according to the layout.
+- Render four teacher cards on the "Teachers" page, and load more cards upon
+  clicking the "Load more" button, triggering a database query for additional
+  cards.
+- If an unauthorized user clicks the heart-shaped button, show a modal window or
+  push notification stating that this feature is available only for authorized
+  users. For authorized users, add the card to the favorites list (using
+  localStorage or Firebase's user collection) and change the heart button color.
+- Upon a second click on the heart-shaped button, remove the card from the
+  favorites list and revert the button color to its initial state.
+- Clicking the "Read more" button should expand the card with more detailed
+  information about the teacher and reviews from students.
+- Clicking the "Book trial lesson" button should open a modal window with a form
+  for booking a trial lesson. Implement form validation using Formik & Yup. All
+  fields must be mandatory.
+- The modal window should close by clicking the "x" button, clicking on the
+  backdrop, or pressing the Esc key.
+- For an authorized user, provide access to the private "Favorites" page, where
+  the user can view all cards of teachers they have added to their favorites.
+  The styling of this page should be similar to the "Teachers" page.
