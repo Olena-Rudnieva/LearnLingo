@@ -14,7 +14,7 @@ export const LevelsItem = styled.li`
   display: inline-block;
   padding: 8px 12px;
   border-radius: 35px;
-  background: transparent;
   color: #363535;
+  background: transparent;
   border: 1px solid rgba(18, 20, 23, 0.2);
 `;

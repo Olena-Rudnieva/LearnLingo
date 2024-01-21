@@ -19,7 +19,7 @@ import { Button } from 'components/Button/Button';
 import { BasicModalWindow } from 'components/Modal/BasicModalWindow/BasicModalWindow';
 import { ModalBookTrialLesson } from 'components/Modal/ModalBookTrialLesson/ModalBookTrialLesson';
 
-export const TeachersCard = ({ teacher }) => {
+export const TeachersCard = ({ teacher, coloredLevel }) => {
   const { avatar_url, name, surname, languages, lesson_info, conditions } =
     teacher;
 
@@ -64,7 +64,7 @@ export const TeachersCard = ({ teacher }) => {
         ) : (
           <Reviews teacher={teacher} />
         )}
-        <LevelsBlock teacher={teacher} />
+        <LevelsBlock teacher={teacher} coloredLevel={coloredLevel} />
         {readMore && (
           <ButtonWrapper>
             <Button

@@ -19,6 +19,7 @@ const Teachers = () => {
   const [teachersCardsAmount, setTeachersCardsAmount] = useState(4);
   const [hasMoreTeachers, setHasMoreTeachers] = useState(false);
   const [allTeachers, setAllTeachers] = useState([]);
+  const [coloredLevel, setColoredLevel] = useState('A1 Beginner');
   const dispatch = useDispatch();
   const teachers = useSelector(selectTeachers);
   const filter = useSelector(state => state.teachers.filter);
@@ -89,18 +90,21 @@ const Teachers = () => {
       <Container>
         <TeachersWrapper>
           <FilterStyled>
-            <Filter />
+            <Filter setColoredLevel={setColoredLevel} />
           </FilterStyled>
           {filter.language === '' &&
           filter.level === '' &&
           filter.price === '' ? (
-            <TeachersList teachers={teachers} />
+            <TeachersList teachers={teachers} coloredLevel={coloredLevel} />
           ) : (
             <>
               {filteredTeachers.length === 0 ? (
                 <h2>No teachers match the criteria</h2>
               ) : (
-                <TeachersList teachers={filteredTeachers} />
+                <TeachersList
+                  teachers={filteredTeachers}
+                  coloredLevel={coloredLevel}
+                />
               )}
             </>
           )}

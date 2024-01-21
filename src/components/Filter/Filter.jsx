@@ -12,7 +12,7 @@ import { useState } from 'react';
 import { removeFilter, setFilter } from '../../redux/teachers/teachersSlice';
 import { Button } from 'components/Button/Button';
 
-export const Filter = () => {
+export const Filter = ({ setColoredLevel }) => {
   const [selectedLanguage, setSelectedLanguage] = useState('');
   const [selectedLevel, setSelectedLevel] = useState('');
   const [selectedPrice, setSelectedPrice] = useState('');
@@ -25,6 +25,7 @@ export const Filter = () => {
 
   const handleSelectLevel = event => {
     setSelectedLevel(event.target.value);
+    setColoredLevel(event.target.value);
     dispatch(setFilter({ ...getFilter(), level: event.target.value }));
   };
 
