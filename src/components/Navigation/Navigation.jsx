@@ -8,8 +8,8 @@ export const Navigation = () => {
   return (
     <Nav>
       <StyledLink to="/">Home</StyledLink>
-      <StyledLink to="/teachers">Teachers</StyledLink>
-      {isLoggedIn && <StyledLink to="/favorites">Favorites</StyledLink>}
+      <StyledLink to="teachers">Teachers</StyledLink>
+      {isLoggedIn && <StyledLink to="favorites">Favorites</StyledLink>}
     </Nav>
   );
 };
