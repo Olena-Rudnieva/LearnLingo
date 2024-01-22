@@ -6,6 +6,8 @@ import { addUser } from '../redux/auth/authSlice';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase/config';
 import { PrivateRoute } from './PrivateRoute';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Home = lazy(() => import('../pages/Home/Home'));
 const Teachers = lazy(() => import('../pages/Teachers/Teachers'));
@@ -39,6 +41,7 @@ export const App = () => {
           <Route path="*" element={<Home />} />
         </Route>
       </Routes>
+      <ToastContainer />
     </>
   );
 };

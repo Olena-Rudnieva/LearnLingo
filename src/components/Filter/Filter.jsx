@@ -45,7 +45,7 @@ export const Filter = ({ setColoredLevel }) => {
   const reset = () => {
     setSelectedLanguage('English');
     setSelectedLevel('A1 Beginner');
-    setSelectedPrice('25');
+    setSelectedPrice('All');
   };
 
   const handleRemoveFilter = () => {

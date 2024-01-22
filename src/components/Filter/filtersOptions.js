@@ -18,4 +18,4 @@ export const levels = [
   'C2 Proficient',
 ];
 
-export const prices = ['25', '27', '28', '30', '32'];
+export const prices = ['All', '25', '27', '28', '30', '32'];

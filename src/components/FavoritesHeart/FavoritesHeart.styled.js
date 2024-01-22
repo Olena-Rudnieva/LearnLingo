@@ -13,6 +13,11 @@ export const IconEmpty = styled.svg`
   height: 100%;
   stroke: var(--black);
   fill: transparent;
+  transition: transform 250ms var(--transition);
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 export const IconFavorite = styled.svg`

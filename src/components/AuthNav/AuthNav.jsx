@@ -16,14 +16,13 @@ import { ModalLogIn } from 'components/Modal/ModalLogIn/ModalLogIn';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase/config';
 import { removeUser } from '../../redux/auth/authSlice';
+import { toast } from 'react-toastify';
 
 export const AuthNav = () => {
   const [modalRegistration, setModalRegistration] = useState(false);
   const [modalLogIn, setModalLogIn] = useState(false);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
-
-  // const currentUser = auth().currentUser;
 
   const handleModalRegistration = () => {
     setModalRegistration(state => !state);
@@ -35,7 +34,7 @@ export const AuthNav = () => {
 
   const handleLogOut = () => {
     signOut(auth)
-      .then(() => console.log('success'))
+      .then(() => toast.success('You have successfully logged out'))
       .catch(error => console.log(error));
     dispatch(removeUser());
   };

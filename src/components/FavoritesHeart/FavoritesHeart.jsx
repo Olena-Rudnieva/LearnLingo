@@ -7,6 +7,7 @@ import {
   removeFavorite,
 } from '../../redux/teachers/teachersSlice';
 import { selectIsLoggedIn } from '../../redux/auth/authSelectors';
+import { toast } from 'react-toastify';
 
 export const FavoritesHeart = ({ teacher }) => {
   const dispatch = useDispatch();
@@ -21,8 +22,11 @@ export const FavoritesHeart = ({ teacher }) => {
       isFavorite
         ? dispatch(removeFavorite(teacher))
         : dispatch(addFavorite(teacher));
+      toast.success(
+        isFavorite ? 'Removed from favorites' : 'Added to favorites'
+      );
     } else {
-      alert('Please log in to use this functionality.');
+      toast.warn('Please log in to use this functionality.');
     }
   };
 

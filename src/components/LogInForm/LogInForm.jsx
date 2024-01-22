@@ -29,10 +29,8 @@ export const LogInForm = ({ handleModalToggle }) => {
   };
 
   const handleSubmit = ({ email, password }, actions) => {
-    console.log(email, password);
     signInWithEmailAndPassword(auth, email, password)
-      .then(user => {
-        console.log(user);
+      .then(() => {
         actions.resetForm();
       })
       .catch(error => console.log(error));

@@ -5,6 +5,11 @@ export const LogoWrapper = styled.div`
   gap: 8px;
   align-items: center;
   justify-content: center;
+  transition: transform 250ms var(--transition);
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 export const Icon = styled.svg`
