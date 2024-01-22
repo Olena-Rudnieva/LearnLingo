@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { addUser } from '../redux/auth/authSlice';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase/config';
-// import { PrivateRoute } from './PrivateRoute';
+import { PrivateRoute } from './PrivateRoute';
 
 const Home = lazy(() => import('../pages/Home/Home'));
 const Teachers = lazy(() => import('../pages/Teachers/Teachers'));
@@ -32,11 +32,10 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="teachers" element={<Teachers />} />
-          <Route path="favorites" element={<Favorites />} />
-          {/* <Route
+          <Route
             path="favorites"
             element={<PrivateRoute component={<Favorites />} redirectTo="/" />}
-          /> */}
+          />
           <Route path="*" element={<Home />} />
         </Route>
       </Routes>
