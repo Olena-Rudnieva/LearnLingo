@@ -31,9 +31,8 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route index path="/teachers" element={<Teachers />} />
+          <Route path="/teachers" element={<Teachers />} />
           <Route
-            index
             path="/favorites"
             element={<PrivateRoute component={<Favorites />} redirectTo="/" />}
           />
