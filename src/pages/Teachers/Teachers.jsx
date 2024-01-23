@@ -20,6 +20,7 @@ const Teachers = () => {
   const [hasMoreTeachers, setHasMoreTeachers] = useState(false);
   const [allTeachers, setAllTeachers] = useState([]);
   const [coloredLevel, setColoredLevel] = useState('A1 Beginner');
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const dispatch = useDispatch();
   const teachers = useSelector(selectTeachers);
   const filter = useSelector(state => state.teachers.filter);
@@ -51,6 +52,7 @@ const Teachers = () => {
           orderByKey(),
           limitToFirst(teachersCardsAmount)
         );
+        setIsLoadingMore(true);
         const snapshot = await get(dataQuery);
 
         if (snapshot.exists()) {
@@ -66,6 +68,8 @@ const Teachers = () => {
         }
       } catch (error) {
         console.error('Loading error', error.message);
+      } finally {
+        setIsLoadingMore(false);
       }
     };
 
@@ -109,7 +113,9 @@ const Teachers = () => {
             </>
           )}
           <ButtonWrapper>
-            {hasMoreTeachers &&
+            {isLoadingMore && <h2>Loading...</h2>}
+            {!isLoadingMore &&
+              hasMoreTeachers &&
               filteredTeachers.length === allTeachers.length && (
                 <Button
                   padding={'16px 48px'}

@@ -28,7 +28,7 @@ export const teachersSlice = createSlice({
     setFilter: (state, action) => {
       state.filter = action.payload;
     },
-    removeFilter(state, { payload }) {
+    removeFilter(state, action) {
       state.filter.language = '';
       state.filter.level = '';
       state.filter.price = '';

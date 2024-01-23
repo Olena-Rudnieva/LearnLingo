@@ -36,12 +36,13 @@ export const Select = styled.select`
   line-height: 1.1111;
 
   & option {
-    background-color: white;
-    font-size: 16px;
+    background-color: #e8f0eb;
+    font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: 1.1111;
     color: var(--black);
+    border-radius: 14px;
   }
 `;
 
