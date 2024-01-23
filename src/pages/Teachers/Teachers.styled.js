@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { CgSandClock } from 'react-icons/cg';
 
 export const TeachersSection = styled.div`
   padding-top: 138px;
@@ -23,4 +24,15 @@ export const FilterStyled = styled.div`
 
 export const ButtonWrapper = styled.div`
   padding-bottom: 96px;
+`;
+
+export const LoadingWrapper = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+
+export const SandClock = styled(CgSandClock)`
+  width: 40px;
+  height: 40px;
+  color: var(--olive);
 `;

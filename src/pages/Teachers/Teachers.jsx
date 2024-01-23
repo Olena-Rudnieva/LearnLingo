@@ -1,8 +1,11 @@
 import { Filter } from 'components/Filter/Filter';
 import { TeachersList } from 'components/TeachersList/TeachersList';
+
 import {
   ButtonWrapper,
   FilterStyled,
+  LoadingWrapper,
+  SandClock,
   TeachersSection,
   TeachersWrapper,
 } from './Teachers.styled';
@@ -113,7 +116,12 @@ const Teachers = () => {
             </>
           )}
           <ButtonWrapper>
-            {isLoadingMore && <h2>Loading...</h2>}
+            {isLoadingMore && (
+              <LoadingWrapper>
+                <h2>Loading</h2>
+                <SandClock />
+              </LoadingWrapper>
+            )}
             {!isLoadingMore &&
               hasMoreTeachers &&
               filteredTeachers.length === allTeachers.length && (

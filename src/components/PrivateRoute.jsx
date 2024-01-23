@@ -1,8 +1,20 @@
 import { Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '../redux/auth/authSelectors';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebase/config';
 
-export const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  return isLoggedIn ? Component : <Navigate to={redirectTo} />;
+const checkIsLoggedIn = async () => {
+  return new Promise(resolve => {
+    const unsubscribe = onAuthStateChanged(auth, user => {
+      const isLoggedIn = !!user;
+      resolve(isLoggedIn);
+      unsubscribe();
+    });
+  });
+};
+
+export const PrivateRoute = ({
+  component: Component,
+  redirectTo = '/teachers',
+}) => {
+  return checkIsLoggedIn ? Component : <Navigate to={redirectTo} />;
 };

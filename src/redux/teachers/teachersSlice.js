@@ -22,13 +22,13 @@ export const teachersSlice = createSlice({
     },
     removeFavorite: (state, action) => {
       state.favorites = state.favorites.filter(
-        item => item.id !== action.payload.id
+        item => item.lessons_done !== action.payload.lessons_done
       );
     },
     setFilter: (state, action) => {
       state.filter = action.payload;
     },
-    removeFilter(state, action) {
+    removeFilter(state) {
       state.filter.language = '';
       state.filter.level = '';
       state.filter.price = '';
