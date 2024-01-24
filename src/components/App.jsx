@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
-import { Layout } from 'components/Layout/Layout';
+import { Layout } from './Layout/Layout';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../redux/auth/authSlice';
 import { onAuthStateChanged } from 'firebase/auth';
