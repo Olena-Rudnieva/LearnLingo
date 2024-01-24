@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  padding: 64px;
-  width: 566px;
+  padding: 20px;
+  width: 100%;
+
+  @media screen and (min-width: 586px) {
+    padding: 64px;
+    width: 566px;
+  }
 `;
 
 export const Title = styled.h2`

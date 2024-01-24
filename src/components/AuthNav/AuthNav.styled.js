@@ -4,12 +4,18 @@ import { FiLogOut } from 'react-icons/fi';
 export const AuthNavWrapper = styled.div`
   display: flex;
   gap: 16px;
-  margin-right: 64px;
+  margin-right: 0;
+  margin-top: 10px;
+
+  @media screen and (min-width: 768px) {
+    margin-right: 64px;
+    margin-top: 0;
+  }
 `;
 
 export const RegistrationBtn = styled.button`
   max-width: 166px;
-  padding: 14px 39px;
+  padding: 5px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,6 +32,10 @@ export const RegistrationBtn = styled.button`
 
   &:hover {
     transform: scale(1.1);
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 14px 39px;
   }
 `;
 

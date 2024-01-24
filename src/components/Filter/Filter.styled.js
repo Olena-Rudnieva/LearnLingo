@@ -6,8 +6,15 @@ export const FilterWrapper = styled.div`
 
 export const Form = styled.form`
   display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
+
   gap: 20px;
   justify-content: flex-start;
+
+  /* @media screen and (min-width: 768px) {
+    flex-direction: row;
+  } */
 `;
 
 export const OptionsWrapper = styled.div`
@@ -37,7 +44,7 @@ export const Select = styled.select`
 
   & option {
     background-color: #e8f0eb;
-    font-size: 18px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 1.1111;

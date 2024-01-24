@@ -9,19 +9,34 @@ export const HeroWrapper = styled.div`
 
 export const BlockWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 24px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: 1200px) {
+    flex-direction: row;
+  }
 `;
 
 export const TextBlock = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 720px;
-  height: 530px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
   border-radius: 30px;
   background-color: #f8f8f8;
-  padding: 98px 108px 98px 64px;
+  padding: 20px 20px 20px 20px;
   color: var(--black);
+
+  @media screen and (min-width: 768px) {
+    align-items: flex-start;
+    width: 720px;
+    height: 530px;
+    padding: 98px 108px 98px 64px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -47,11 +62,21 @@ export const Text = styled.p`
   font-size: 16px;
   line-height: 1.375;
   letter-spacing: -0.32px;
-  width: 471px;
+  width: 100%;
   margin-bottom: 64px;
+
+  @media screen and (min-width: 768px) {
+    width: 471px;
+  }
 `;
 
 export const Image = styled.img`
-  width: 568px;
-  height: 530px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: 768px) {
+    width: 568px;
+    height: 530px;
+  }
 `;

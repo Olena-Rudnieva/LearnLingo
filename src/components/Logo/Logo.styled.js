@@ -6,9 +6,14 @@ export const LogoWrapper = styled.div`
   align-items: center;
   justify-content: center;
   transition: transform 250ms var(--transition);
+  margin-bottom: 20px;
 
   &:hover {
     transform: scale(1.05);
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0;
   }
 `;
 

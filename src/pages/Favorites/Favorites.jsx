@@ -9,12 +9,9 @@ import {
 import { useSelector } from 'react-redux';
 import { selectFavorites } from '../../redux/teachers/teachersSelectors';
 import { TeachersCard } from 'components/TeachersCard/TeachersCard';
-import { selectIsLoggedIn } from '../../redux/auth/authSelectors';
 
 const Favorites = () => {
   const favoriteTeachers = useSelector(selectFavorites);
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  console.log(isLoggedIn);
 
   return (
     <FavoritesSection>

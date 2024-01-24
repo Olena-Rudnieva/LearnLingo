@@ -2,13 +2,25 @@ import styled from 'styled-components';
 
 export const FeaturesWrapper = styled.ul`
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
-  margin-left: 190px;
+  margin-left: 0;
   margin-right: 49px;
+  margin-bottom: 10px;
+  margin-top: 10px;
   color: var(--black);
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
+
+  @media screen and (min-width: 768px) {
+    margin-left: 20px;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  @media screen and (min-width: 1200px) {
+    margin-left: 190px;
+  }
 `;
 
 export const FeaturesItem = styled.li`

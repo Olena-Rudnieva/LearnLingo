@@ -2,10 +2,15 @@ import styled from 'styled-components';
 
 export const StyledList = styled.ul`
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 280px;
   align-items: center;
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
   gap: 100px;
-  padding: 40px 122px;
+  padding: 40px 10px;
   border-radius: 12px;
   background-image: repeating-linear-gradient(
       to right,
@@ -38,11 +43,26 @@ export const StyledList = styled.ul`
   background-position: left top, left bottom, left top, right top;
   background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
   background-size: 20px 1.5px, 20px 2px, 1.5px 20px, 1.5px 20px;
+
+  @media screen and (min-width: 768px) {
+    width: 500px;
+    flex-direction: row;
+  }
+
+  @media screen and (min-width: 1200px) {
+    padding: 40px 122px;
+    width: auto;
+  }
 `;
 
 export const ItemWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 16px;
+
+  @media screen and (min-width: 1200px) {
+    flex-direction: row;
+  }
 `;
 
 export const Title = styled.p`

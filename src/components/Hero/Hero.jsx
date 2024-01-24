@@ -10,8 +10,11 @@ import {
 } from './Hero.styled';
 import { Button } from 'components/Button/Button';
 import heroImg from '../../images/heroImg.png';
+import { useNavigate } from 'react-router-dom';
 
 export const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <HeroWrapper>
       <BlockWrapper>
@@ -29,7 +32,7 @@ export const Hero = () => {
             padding={'16px 88px'}
             text={'Get started'}
             type={'button'}
-            // handleClick={handleCall}
+            handleClick={() => navigate('/teachers')}
           />
         </TextBlock>
         <Image src={heroImg} alt="Girl with laptop" />

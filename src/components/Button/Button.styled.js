@@ -16,4 +16,8 @@ export const ButtonStyle = styled.button`
   &:focus {
     background: var(--accent);
   }
+
+  @media screen and (max-width: 768px) {
+    padding: 10px 50px;
+  }
 `;

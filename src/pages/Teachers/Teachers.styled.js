@@ -2,9 +2,17 @@ import styled from 'styled-components';
 import { CgSandClock } from 'react-icons/cg';
 
 export const TeachersSection = styled.div`
-  padding-top: 138px;
+  padding-top: 310px;
   background-color: var(--background-grey);
   min-height: 100vh;
+
+  @media screen and (min-width: 494px) {
+    padding-top: 250px;
+  }
+
+  @media screen and (min-width: 758px) {
+    padding-top: 138px;
+  }
 `;
 
 export const TeachersWrapper = styled.div`
@@ -18,8 +26,20 @@ export const TeachersWrapper = styled.div`
 
 export const FilterStyled = styled.div`
   position: absolute;
-  top: -106px;
-  left: 64px;
+  top: -290px;
+  left: 0;
+
+  @media screen and (min-width: 494px) {
+    top: -220px;
+  }
+
+  @media screen and (min-width: 758px) {
+    top: -106px;
+  }
+
+  @media screen and (min-width: 1320px) {
+    left: 64px;
+  }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -29,6 +49,7 @@ export const ButtonWrapper = styled.div`
 export const LoadingWrapper = styled.div`
   display: flex;
   gap: 20px;
+  align-items: center;
 `;
 
 export const SandClock = styled(CgSandClock)`

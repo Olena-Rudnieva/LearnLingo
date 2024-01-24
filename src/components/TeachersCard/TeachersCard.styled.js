@@ -2,12 +2,21 @@ import styled from 'styled-components';
 
 export const CardWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 48px;
-  width: 1184px;
+  width: 100%;
   padding: 24px;
   margin-bottom: 32px;
   background-color: var(--background-white);
   border-radius: 24px;
+
+  @media screen and (min-width: 580px) {
+    flex-direction: row;
+  }
+
+  /* @media screen and (min-width: 1200px) {
+    width: 1184px;
+  } */
 `;
 
 export const ImageWrapper = styled.div`
@@ -44,7 +53,12 @@ export const Avatar = styled.img`
 
 export const UpperList = styled.div`
   display: flex;
+  flex-direction: column;
   margin-bottom: 8px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 export const Text = styled.p`
@@ -52,7 +66,7 @@ export const Text = styled.p`
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
 `;
 
 export const DescriptionBlock = styled.div`

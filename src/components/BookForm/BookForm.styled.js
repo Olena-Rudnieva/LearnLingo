@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const Form = styled.form`
+  text-align: center;
+`;
+
 export const RadioWrapper = styled.div`
   margin-bottom: 40px;
 `;

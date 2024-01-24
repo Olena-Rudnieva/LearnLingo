@@ -2,6 +2,7 @@ import { Formik, Field } from 'formik';
 import {
   ButtonWrapper,
   ErrorText,
+  Form,
   FormWrapper,
   InputWrapper,
   RadioButtonWrapper,
@@ -48,7 +49,7 @@ export const BookForm = ({ handleModalToggle }) => {
       validationSchema={BookFormSchema}
     >
       {({ handleSubmit }) => (
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <RadioWrapper>
             {categories.map(({ label, value }) => (
               <RadioButtonWrapper
@@ -112,7 +113,7 @@ export const BookForm = ({ handleModalToggle }) => {
               handleClick={handleSubmit}
             />
           </ButtonWrapper>
-        </form>
+        </Form>
       )}
     </Formik>
   );
