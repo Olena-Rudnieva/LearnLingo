@@ -9,6 +9,8 @@ const firebaseConfig = {
   storageBucket: 'teachers-838b3.appspot.com',
   messagingSenderId: '290644177618',
   appId: '1:290644177618:web:ecb1ac84338daa0dd1b30b',
+  databaseURL:
+    'https://teachers-838b3-default-rtdb.europe-west1.firebasedatabase.app/',
 };
 
 const app = initializeApp(firebaseConfig);
