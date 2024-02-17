@@ -3,14 +3,12 @@ import { getAuth } from 'firebase/auth';
 import { getDatabase } from 'firebase/database';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCir-ooyXuZnGdCiQPajHPATWUMo0Qhw8g',
-  authDomain: 'learn-lingo-e673b.firebaseapp.com',
-  databaseURL:
-    'https://learn-lingo-e673b-default-rtdb.europe-west1.firebasedatabase.app',
-  projectId: 'learn-lingo-e673b',
-  storageBucket: 'learn-lingo-e673b.appspot.com',
-  messagingSenderId: '854082519527',
-  appId: '1:854082519527:web:74ebf0bb74268ec2983d42',
+  apiKey: 'AIzaSyB3RyTGlntfLdn8Ed3M1uyivL3ERcXlsDY',
+  authDomain: 'teachers-838b3.firebaseapp.com',
+  projectId: 'teachers-838b3',
+  storageBucket: 'teachers-838b3.appspot.com',
+  messagingSenderId: '290644177618',
+  appId: '1:290644177618:web:ecb1ac84338daa0dd1b30b',
 };
 
 const app = initializeApp(firebaseConfig);
